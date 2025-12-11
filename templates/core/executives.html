@@ -14,8 +14,8 @@
             {% for executive in executives %}
             <div class="col-6 col-md-4 col-lg-3">
                 <div class="card executive-card card-hover h-100">
-                    {% if executive.photo %}
-                    <img src="{{ executive.photo.url }}" alt="{{ executive.name }}" class="photo mx-auto">
+                    {% if executive.get_photo_url %}
+                    <img src="{{ executive.get_photo_url }}" alt="{{ executive.name }}" class="photo mx-auto">
                     {% else %}
                     <div class="photo-placeholder">
                         <i class="bi bi-person-fill"></i>

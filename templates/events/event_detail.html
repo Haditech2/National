@@ -1,0 +1,80 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ event.title }} - NAAS Events{% endblock %}
+
+{% block content %}
+<section class="py-5">
+    <div class="container">
+        <div class="mb-4">
+            <a href="{% url 'events:event_list' %}" class="text-decoration-none">
+                <i class="bi bi-arrow-left me-2"></i>Back to Events
+            </a>
+        </div>
+        
+        <div class="row">
+            <div class="col-lg-8">
+                {% if event.image %}
+                <img src="{{ event.image.url }}" alt="{{ event.title }}" class="img-fluid rounded mb-4 w-100">
+                {% endif %}
+                
+                <h1 class="text-dark-green">{{ event.title }}</h1>
+                
+                <div class="d-flex flex-wrap gap-4 my-4">
+                    <div class="d-flex align-items-center">
+                        <div class="event-date-badge me-3">
+                            <div class="day">{{ event.date|date:"d" }}</div>
+                            <div class="month">{{ event.date|date:"M" }}</div>
+                        </div>
+                        <div>
+                            <strong>{{ event.date|date:"l" }}</strong><br>
+                            <span class="text-muted">{{ event.date|date:"F d, Y" }}</span>
+                        </div>
+                    </div>
+                    <div>
+                        <i class="bi bi-clock text-gold fs-4 me-2"></i>
+                        <span>{{ event.date|date:"g:i A" }}</span>
+                    </div>
+                    <div>
+                        <i class="bi bi-geo-alt text-gold fs-4 me-2"></i>
+                        <span>{{ event.venue }}</span>
+                    </div>
+                </div>
+                
+                <div class="content">
+                    {{ event.description|linebreaks }}
+                </div>
+                
+                <!-- Event Gallery -->
+                {% if event.gallery.all %}
+                <div class="mt-5">
+                    <h4 class="text-gold mb-4">Event Gallery</h4>
+                    <div class="row g-3">
+                        {% for image in event.gallery.all %}
+                        <div class="col-4 col-md-3">
+                            <img src="{{ image.image.url }}" alt="{{ image.caption }}" class="img-fluid rounded" style="height: 150px; width: 100%; object-fit: cover;">
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+                {% endif %}
+            </div>
+            
+            <div class="col-lg-4">
+                <div class="card bg-dark-green text-white">
+                    <div class="card-body text-center">
+                        {% if event.is_upcoming %}
+                        <h5 class="text-gold">Event Status</h5>
+                        <span class="badge bg-gold text-dark fs-6">Upcoming</span>
+                        <p class="mt-3 mb-0">Mark your calendar!</p>
+                        {% else %}
+                        <h5 class="text-gold">Event Status</h5>
+                        <span class="badge bg-secondary fs-6">Completed</span>
+                        <p class="mt-3 mb-0">This event has ended.</p>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

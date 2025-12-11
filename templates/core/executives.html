@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+{% block title %}Our Executives - NAAS{% endblock %}
+
+{% block content %}
+<section class="py-5">
+    <div class="container">
+        <div class="section-header text-center">
+            <h1 class="text-dark-green">Our Executives</h1>
+            <p class="text-muted">Meet the dedicated leaders of NAAS National Body</p>
+        </div>
+        
+        <div class="row g-4 justify-content-center">
+            {% for executive in executives %}
+            <div class="col-6 col-md-4 col-lg-3">
+                <div class="card executive-card card-hover h-100">
+                    {% if executive.photo %}
+                    <img src="{{ executive.photo.url }}" alt="{{ executive.name }}" class="photo mx-auto">
+                    {% else %}
+                    <div class="photo-placeholder">
+                        <i class="bi bi-person-fill"></i>
+                    </div>
+                    {% endif %}
+                    <h5 class="mb-1">{{ executive.name }}</h5>
+                    <p class="text-gold mb-2">{{ executive.position }}</p>
+                    {% if executive.school %}
+                    <p class="text-muted small mb-1"><i class="bi bi-mortarboard me-1"></i>{{ executive.school }}</p>
+                    {% endif %}
+                    {% if executive.phone_number %}
+                    <p class="text-muted small mb-1"><i class="bi bi-telephone me-1"></i>{{ executive.phone_number }}</p>
+                    {% endif %}
+                    {% if executive.bio %}
+                    <p class="text-muted small mt-2">{{ executive.bio|truncatewords:20 }}</p>
+                    {% endif %}
+                </div>
+            </div>
+            {% empty %}
+            <div class="col-12 text-center py-5">
+                <i class="bi bi-people text-muted" style="font-size: 5rem;"></i>
+                <h4 class="text-muted mt-3">No Executives Listed Yet</h4>
+                <p class="text-muted">Executive information will be available soon.</p>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endblock %}

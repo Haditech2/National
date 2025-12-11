@@ -1,0 +1,119 @@
+{% extends 'base.html' %}
+
+{% block title %}News - NAAS{% endblock %}
+
+{% block content %}
+<section class="py-5">
+    <div class="container">
+        <div class="section-header">
+            <h1 class="text-dark-green">News & Updates</h1>
+        </div>
+        
+        <div class="row">
+            <!-- Main Content -->
+            <div class="col-lg-8">
+                <!-- Search -->
+                <form method="get" class="mb-4">
+                    <div class="input-group">
+                        <input type="text" name="search" class="form-control" placeholder="Search news..." value="{{ request.GET.search }}">
+                        <button class="btn btn-dark-green" type="submit">
+                            <i class="bi bi-search"></i>
+                        </button>
+                    </div>
+                </form>
+                
+                {% if current_category %}
+                <div class="alert alert-info">
+                    Showing news in: <strong>{{ current_category.name }}</strong>
+                    <a href="{% url 'news:news_list' %}" class="float-end">Clear filter</a>
+                </div>
+                {% endif %}
+                
+                <!-- News List -->
+                <div class="row g-4">
+                    {% for post in news_posts %}
+                    <div class="col-md-6">
+                        <div class="card news-card card-hover h-100">
+                            {% if post.image %}
+                            <div class="position-relative">
+                                <img src="{{ post.image.url }}" class="card-img-top" alt="{{ post.title }}">
+                                {% if post.featured %}
+                                <span class="badge badge-featured">Featured</span>
+                                {% endif %}
+                            </div>
+                            {% else %}
+                            <div class="card-img-top bg-dark-green d-flex align-items-center justify-content-center" style="height: 200px;">
+                                <i class="bi bi-newspaper text-gold" style="font-size: 4rem;"></i>
+                            </div>
+                            {% endif %}
+                            <div class="card-body">
+                                <div class="d-flex justify-content-between align-items-center mb-2">
+                                    <span class="badge bg-dark-green">{{ post.category.name }}</span>
+                                    <small class="text-muted">{{ post.published_date|date:"M d, Y" }}</small>
+                                </div>
+                                <h5 class="card-title">{{ post.title }}</h5>
+                                <p class="card-text text-muted">{{ post.excerpt|truncatewords:20 }}</p>
+                            </div>
+                            <div class="card-footer bg-transparent">
+                                <a href="{% url 'news:news_detail' post.slug %}" class="btn btn-sm btn-dark-green">Read More</a>
+                            </div>
+                        </div>
+                    </div>
+                    {% empty %}
+                    <div class="col-12 text-center py-5">
+                        <i class="bi bi-newspaper text-muted" style="font-size: 5rem;"></i>
+                        <h4 class="text-muted mt-3">No News Articles Yet</h4>
+                        <p class="text-muted">Check back soon for updates!</p>
+                    </div>
+                    {% endfor %}
+                </div>
+                
+                <!-- Pagination -->
+                {% if page_obj.has_other_pages %}
+                <nav class="mt-4">
+                    <ul class="pagination justify-content-center">
+                        {% if page_obj.has_previous %}
+                        <li class="page-item">
+                            <a class="page-link" href="?page={{ page_obj.previous_page_number }}">Previous</a>
+                        </li>
+                        {% endif %}
+                        
+                        {% for num in page_obj.paginator.page_range %}
+                        <li class="page-item {% if page_obj.number == num %}active{% endif %}">
+                            <a class="page-link" href="?page={{ num }}">{{ num }}</a>
+                        </li>
+                        {% endfor %}
+                        
+                        {% if page_obj.has_next %}
+                        <li class="page-item">
+                            <a class="page-link" href="?page={{ page_obj.next_page_number }}">Next</a>
+                        </li>
+                        {% endif %}
+                    </ul>
+                </nav>
+                {% endif %}
+            </div>
+            
+            <!-- Sidebar -->
+            <div class="col-lg-4">
+                <div class="card mb-4">
+                    <div class="card-header bg-dark-green text-white">
+                        <i class="bi bi-folder me-2"></i>Categories
+                    </div>
+                    <ul class="list-group list-group-flush">
+                        {% for category in categories %}
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            <a href="{% url 'news:news_by_category' category.slug %}" class="text-decoration-none">
+                                {{ category.name }}
+                            </a>
+                        </li>
+                        {% empty %}
+                        <li class="list-group-item text-muted">No categories yet</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

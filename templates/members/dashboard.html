@@ -1,0 +1,189 @@
+{% extends 'base.html' %}
+
+{% block title %}Dashboard - NAAS{% endblock %}
+
+{% block content %}
+<section class="py-5">
+    <div class="container">
+        <div class="row">
+            <!-- Sidebar -->
+            <div class="col-lg-3 mb-4">
+                <div class="card">
+                    <div class="card-body text-center">
+                        {% if member.passport_photo %}
+                        <img src="{{ member.passport_photo.url }}" alt="Profile" class="rounded-circle mb-3" style="width: 100px; height: 100px; object-fit: cover;">
+                        {% else %}
+                        <div class="rounded-circle bg-dark-green d-flex align-items-center justify-content-center mx-auto mb-3" style="width: 100px; height: 100px;">
+                            <i class="bi bi-person-fill text-white" style="font-size: 3rem;"></i>
+                        </div>
+                        {% endif %}
+                        <h5 class="mb-1">{{ user.get_full_name|default:user.username }}</h5>
+                        <small class="text-muted">{{ member.membership_id|default:"Pending" }}</small>
+                    </div>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">
+                            <a href="{% url 'members:dashboard' %}" class="text-decoration-none">
+                                <i class="bi bi-speedometer2 me-2"></i>Dashboard
+                            </a>
+                        </li>
+                        <li class="list-group-item">
+                            <a href="{% url 'members:profile' %}" class="text-decoration-none">
+                                <i class="bi bi-person me-2"></i>Profile
+                            </a>
+                        </li>
+                        <li class="list-group-item">
+                            <a href="{% url 'members:profile_edit' %}" class="text-decoration-none">
+                                <i class="bi bi-pencil me-2"></i>Edit Profile
+                            </a>
+                        </li>
+                        <li class="list-group-item">
+                            <a href="{% url 'members:id_card_preview' %}" class="text-decoration-none">
+                                <i class="bi bi-card-heading me-2"></i>ID Card
+                            </a>
+                        </li>
+                        <li class="list-group-item">
+                            <a href="{% url 'members:logout' %}" class="text-decoration-none text-danger">
+                                <i class="bi bi-box-arrow-right me-2"></i>Logout
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- Main Content -->
+            <div class="col-lg-9">
+                <h2 class="text-dark-green mb-4">Welcome, {{ user.first_name|default:user.username }}!</h2>
+                
+                <div class="row g-4 mb-4">
+                    <div class="col-md-4">
+                        <div class="dashboard-stat bg-dark-green text-white">
+                            <div class="icon text-gold"><i class="bi bi-card-heading"></i></div>
+                            <div class="number">{{ member.membership_id|default:"N/A" }}</div>
+                            <div>Membership ID</div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="dashboard-stat bg-gold text-dark">
+                            <div class="icon"><i class="bi bi-calendar-check"></i></div>
+                            <div class="number">{{ days_to_election }}</div>
+                            <div>Days to Election</div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="dashboard-stat bg-success text-white">
+                            <div class="icon"><i class="bi bi-check-circle"></i></div>
+                            <div class="number">Active</div>
+                            <div>Membership Status</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Quick Actions -->
+                <div class="card dashboard-card mb-4">
+                    <div class="card-header bg-dark-green text-white">
+                        <i class="bi bi-lightning me-2"></i>Quick Actions
+                    </div>
+                    <div class="card-body">
+                        <div class="row g-3">
+                            <div class="col-md-4">
+                                <a href="{% url 'members:id_card_preview' %}" class="btn btn-outline-success w-100 py-3">
+                                    <i class="bi bi-card-heading d-block fs-3 mb-2"></i>
+                                    View ID Card
+                                </a>
+                            </div>
+                            <div class="col-md-4">
+                                <a href="{% url 'members:generate_id_card' %}" class="btn btn-outline-primary w-100 py-3">
+                                    <i class="bi bi-download d-block fs-3 mb-2"></i>
+                                    Download ID Card
+                                </a>
+                            </div>
+                            <div class="col-md-4">
+                                <a href="{% url 'members:profile_edit' %}" class="btn btn-outline-warning w-100 py-3">
+                                    <i class="bi bi-pencil-square d-block fs-3 mb-2"></i>
+                                    Update Profile
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Profile Completion -->
+                <div class="card dashboard-card">
+                    <div class="card-header bg-dark-green text-white">
+                        <i class="bi bi-person-check me-2"></i>Profile Status
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <ul class="list-unstyled">
+                                    <li class="mb-2">
+                                        {% if user.first_name and user.last_name %}
+                                        <i class="bi bi-check-circle-fill text-success me-2"></i>
+                                        {% else %}
+                                        <i class="bi bi-x-circle-fill text-danger me-2"></i>
+                                        {% endif %}
+                                        Full Name
+                                    </li>
+                                    <li class="mb-2">
+                                        {% if user.email %}
+                                        <i class="bi bi-check-circle-fill text-success me-2"></i>
+                                        {% else %}
+                                        <i class="bi bi-x-circle-fill text-danger me-2"></i>
+                                        {% endif %}
+                                        Email Address
+                                    </li>
+                                    <li class="mb-2">
+                                        {% if member.phone_number %}
+                                        <i class="bi bi-check-circle-fill text-success me-2"></i>
+                                        {% else %}
+                                        <i class="bi bi-x-circle-fill text-danger me-2"></i>
+                                        {% endif %}
+                                        Phone Number
+                                    </li>
+                                    <li class="mb-2">
+                                        {% if member.school %}
+                                        <i class="bi bi-check-circle-fill text-success me-2"></i>
+                                        {% else %}
+                                        <i class="bi bi-x-circle-fill text-danger me-2"></i>
+                                        {% endif %}
+                                        School
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="col-md-6">
+                                <ul class="list-unstyled">
+                                    <li class="mb-2">
+                                        {% if member.level %}
+                                        <i class="bi bi-check-circle-fill text-success me-2"></i>
+                                        {% else %}
+                                        <i class="bi bi-x-circle-fill text-danger me-2"></i>
+                                        {% endif %}
+                                        Level
+                                    </li>
+                                    <li class="mb-2">
+                                        {% if member.chapter %}
+                                        <i class="bi bi-check-circle-fill text-success me-2"></i>
+                                        {% else %}
+                                        <i class="bi bi-x-circle-fill text-danger me-2"></i>
+                                        {% endif %}
+                                        Chapter/Zone
+                                    </li>
+                                    <li class="mb-2">
+                                        {% if member.passport_photo %}
+                                        <i class="bi bi-check-circle-fill text-success me-2"></i>
+                                        {% else %}
+                                        <i class="bi bi-x-circle-fill text-danger me-2"></i>
+                                        {% endif %}
+                                        Passport Photo
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <a href="{% url 'members:profile_edit' %}" class="btn btn-gold">Complete Profile</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

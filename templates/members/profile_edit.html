@@ -1,0 +1,88 @@
+{% extends 'base.html' %}
+
+{% block title %}Edit Profile - NAAS{% endblock %}
+
+{% block content %}
+<section class="py-5">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="card shadow">
+                    <div class="card-header bg-dark-green text-white">
+                        <h5 class="mb-0"><i class="bi bi-pencil me-2"></i>Edit Profile</h5>
+                    </div>
+                    <div class="card-body">
+                        <form method="post" enctype="multipart/form-data">
+                            {% csrf_token %}
+                            
+                            <div class="row g-3">
+                                <div class="col-md-6">
+                                    <label class="form-label">First Name *</label>
+                                    <input type="text" name="first_name" class="form-control" value="{{ form.first_name.value|default:'' }}" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label">Last Name *</label>
+                                    <input type="text" name="last_name" class="form-control" value="{{ form.last_name.value|default:'' }}" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label">Email *</label>
+                                    <input type="email" name="email" class="form-control" value="{{ form.email.value|default:'' }}" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label">Phone Number</label>
+                                    {{ form.phone_number }}
+                                </div>
+                                <div class="col-12">
+                                    <label class="form-label">School</label>
+                                    {{ form.school }}
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label">Department</label>
+                                    {{ form.department }}
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label">Level</label>
+                                    {{ form.level }}
+                                </div>
+                                <div class="col-12">
+                                    <label class="form-label">Chapter/Zone</label>
+                                    {{ form.chapter }}
+                                </div>
+                                <div class="col-12">
+                                    <label class="form-label">Passport Photo</label>
+                                    {% if object.passport_photo %}
+                                    <div class="mb-2">
+                                        <img src="{{ object.passport_photo.url }}" alt="Current photo" style="max-width: 100px;" class="rounded">
+                                    </div>
+                                    {% endif %}
+                                    <input type="file" name="passport_photo" class="form-control" accept="image/*">
+                                    <small class="text-muted">Recommended: Passport-size photo with clear face</small>
+                                </div>
+                                
+                                <hr class="my-4">
+                                <h6 class="text-gold">Emergency Contact Information</h6>
+                                
+                                <div class="col-md-6">
+                                    <label class="form-label">Emergency Contact Name</label>
+                                    {{ form.emergency_contact }}
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label">Emergency Contact Phone</label>
+                                    {{ form.emergency_phone }}
+                                </div>
+                                
+                                <div class="col-12">
+                                    <button type="submit" class="btn btn-dark-green">
+                                        <i class="bi bi-check-lg me-2"></i>Save Changes
+                                    </button>
+                                    <a href="{% url 'members:profile' %}" class="btn btn-outline-secondary">Cancel</a>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ candidate.name }} - NAAS Candidate{% endblock %}
+
+{% block content %}
+<section class="py-5">
+    <div class="container">
+        <div class="mb-4">
+            <a href="{% url 'election:candidate_list' %}" class="text-decoration-none">
+                <i class="bi bi-arrow-left me-2"></i>Back to Candidates
+            </a>
+        </div>
+        
+        <div class="row">
+            <div class="col-lg-4">
+                <div class="card text-center">
+                    <div class="card-body">
+                        {% if candidate.photo %}
+                        <img src="{{ candidate.photo.url }}" alt="{{ candidate.name }}" class="img-fluid rounded mb-3" style="max-width: 250px;">
+                        {% else %}
+                        <div class="mx-auto mb-3" style="width: 200px; height: 200px; border-radius: 10px; background: linear-gradient(135deg, var(--dark-green), var(--light-green)); display: flex; align-items: center; justify-content: center;">
+                            <i class="bi bi-person-fill text-white" style="font-size: 6rem;"></i>
+                        </div>
+                        {% endif %}
+                        <h3 class="text-dark-green">{{ candidate.name }}</h3>
+                        <span class="badge bg-gold text-dark fs-6 mb-3">{{ candidate.position }}</span>
+                        
+                        <table class="table text-start">
+                            <tr>
+                                <th>Department:</th>
+                                <td>{{ candidate.department }}</td>
+                            </tr>
+                            <tr>
+                                <th>Level:</th>
+                                <td>{{ candidate.level }}</td>
+                            </tr>
+                        </table>
+                        
+                        {% if candidate.manifesto %}
+                        <a href="{{ candidate.manifesto.url }}" class="btn btn-dark-green w-100" target="_blank">
+                            <i class="bi bi-file-pdf me-2"></i>Download Manifesto (PDF)
+                        </a>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-lg-8">
+                <div class="card">
+                    <div class="card-header bg-dark-green text-white">
+                        <h5 class="mb-0"><i class="bi bi-megaphone me-2"></i>Manifesto</h5>
+                    </div>
+                    <div class="card-body">
+                        {% if candidate.manifesto_text %}
+                        {{ candidate.manifesto_text|linebreaks }}
+                        {% else %}
+                        <p class="text-muted">No manifesto text available. Please download the PDF version if available.</p>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

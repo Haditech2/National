@@ -1,0 +1,83 @@
+{% extends 'base.html' %}
+
+{% block title %}My Profile - NAAS{% endblock %}
+
+{% block content %}
+<section class="py-5">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="card shadow">
+                    <div class="card-header bg-dark-green text-white">
+                        <h5 class="mb-0"><i class="bi bi-person me-2"></i>My Profile</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-4 text-center mb-4">
+                                {% if member.passport_photo %}
+                                <img src="{{ member.passport_photo.url }}" alt="Profile" class="img-fluid rounded mb-3" style="max-width: 200px;">
+                                {% else %}
+                                <div class="rounded bg-dark-green d-flex align-items-center justify-content-center mx-auto mb-3" style="width: 200px; height: 200px;">
+                                    <i class="bi bi-person-fill text-white" style="font-size: 6rem;"></i>
+                                </div>
+                                {% endif %}
+                                <h5>{{ user.get_full_name|default:user.username }}</h5>
+                                <span class="badge bg-gold text-dark">{{ member.membership_id|default:"Pending" }}</span>
+                            </div>
+                            <div class="col-md-8">
+                                <table class="table">
+                                    <tr>
+                                        <th width="40%">Full Name:</th>
+                                        <td>{{ user.get_full_name|default:"Not provided" }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Email:</th>
+                                        <td>{{ user.email|default:"Not provided" }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Phone:</th>
+                                        <td>{{ member.phone_number|default:"Not provided" }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>School:</th>
+                                        <td>{{ member.school|default:"Not provided" }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Department:</th>
+                                        <td>{{ member.department|default:"Not provided" }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Level:</th>
+                                        <td>{{ member.level|default:"Not provided" }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Chapter/Zone:</th>
+                                        <td>{{ member.chapter|default:"Not provided" }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Emergency Contact:</th>
+                                        <td>{{ member.emergency_contact|default:"Not provided" }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Emergency Phone:</th>
+                                        <td>{{ member.emergency_phone|default:"Not provided" }}</td>
+                                    </tr>
+                                </table>
+                                
+                                <div class="mt-4">
+                                    <a href="{% url 'members:profile_edit' %}" class="btn btn-dark-green">
+                                        <i class="bi bi-pencil me-2"></i>Edit Profile
+                                    </a>
+                                    <a href="{% url 'members:dashboard' %}" class="btn btn-outline-secondary">
+                                        Back to Dashboard
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

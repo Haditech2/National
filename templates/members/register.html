@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+{% block title %}Register - NAAS{% endblock %}
+
+{% block content %}
+<section class="py-5">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-6 col-lg-5">
+                <div class="card shadow">
+                    <div class="card-header bg-dark-green text-white text-center py-4">
+                        <h4 class="mb-0"><i class="bi bi-person-plus me-2"></i>Join NAAS</h4>
+                    </div>
+                    <div class="card-body p-4">
+                        <form method="post">
+                            {% csrf_token %}
+                            
+                            {% for field in form %}
+                            <div class="mb-3">
+                                <label class="form-label">{{ field.label }}</label>
+                                {{ field }}
+                                {% if field.errors %}
+                                <div class="text-danger small">{{ field.errors.0 }}</div>
+                                {% endif %}
+                                {% if field.help_text %}
+                                <small class="text-muted">{{ field.help_text }}</small>
+                                {% endif %}
+                            </div>
+                            {% endfor %}
+                            
+                            <button type="submit" class="btn btn-dark-green w-100 py-2">
+                                <i class="bi bi-person-check me-2"></i>Create Account
+                            </button>
+                        </form>
+                        
+                        <hr class="my-4">
+                        
+                        <p class="text-center mb-0">
+                            Already a member? <a href="{% url 'members:login' %}" class="text-dark-green">Login here</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

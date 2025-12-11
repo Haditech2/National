@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% block title %}Videos - NAAS{% endblock %}
+
+{% block content %}
+<section class="py-5">
+    <div class="container">
+        <div class="mb-4">
+            <a href="{% url 'gallery:gallery' %}" class="text-decoration-none">
+                <i class="bi bi-arrow-left me-2"></i>Back to Gallery
+            </a>
+        </div>
+        
+        <div class="section-header text-center">
+            <h1 class="text-dark-green">Video Gallery</h1>
+            <p class="text-muted">Watch our latest videos and highlights</p>
+        </div>
+        
+        <div class="row g-4">
+            {% for video in videos %}
+            <div class="col-md-6 col-lg-4">
+                <div class="card card-hover h-100">
+                    <div class="ratio ratio-16x9">
+                        <iframe src="{{ video.embed_url }}" title="{{ video.title }}" allowfullscreen></iframe>
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">{{ video.title }}</h5>
+                        <p class="card-text text-muted">{{ video.description|truncatewords:15 }}</p>
+                        <small class="text-muted">Uploaded: {{ video.uploaded_at|date:"M d, Y" }}</small>
+                    </div>
+                </div>
+            </div>
+            {% empty %}
+            <div class="col-12 text-center py-5">
+                <i class="bi bi-play-circle text-muted" style="font-size: 5rem;"></i>
+                <h4 class="text-muted mt-3">No Videos Yet</h4>
+                <p class="text-muted">Videos will be added soon!</p>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endblock %}

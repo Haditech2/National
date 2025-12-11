@@ -1,0 +1,149 @@
+{% extends 'base.html' %}
+
+{% block title %}Election Information - NAAS{% endblock %}
+
+{% block content %}
+<!-- Election Hero -->
+<section class="countdown-section py-5">
+    <div class="container text-center">
+        <h1 class="text-gold mb-3">NAAS National Election {{ election_year }}</h1>
+        <p class="text-white lead mb-4">Exercise your right to vote and shape the future of NAAS</p>
+        
+        <div class="row justify-content-center g-3 mb-4">
+            <div class="col-6 col-md-3">
+                <div class="countdown-box">
+                    <div class="number" id="countdown-days">{{ days_to_election }}</div>
+                    <div class="label">Days</div>
+                </div>
+            </div>
+            <div class="col-6 col-md-3">
+                <div class="countdown-box">
+                    <div class="number" id="countdown-hours">00</div>
+                    <div class="label">Hours</div>
+                </div>
+            </div>
+            <div class="col-6 col-md-3">
+                <div class="countdown-box">
+                    <div class="number" id="countdown-minutes">00</div>
+                    <div class="label">Minutes</div>
+                </div>
+            </div>
+            <div class="col-6 col-md-3">
+                <div class="countdown-box">
+                    <div class="number" id="countdown-seconds">00</div>
+                    <div class="label">Seconds</div>
+                </div>
+            </div>
+        </div>
+        
+        <a href="{% url 'election:candidate_list' %}" class="btn btn-gold btn-lg">
+            <i class="bi bi-people me-2"></i>View All Candidates
+        </a>
+    </div>
+</section>
+
+<section class="py-5">
+    <div class="container">
+        <div class="row g-4">
+            <div class="col-lg-6">
+                <div class="card h-100">
+                    <div class="card-header bg-dark-green text-white">
+                        <i class="bi bi-calendar-event me-2"></i>Election Details
+                    </div>
+                    <div class="card-body">
+                        <table class="table">
+                            <tr>
+                                <th>Election Date:</th>
+                                <td>December 26, {{ election_year }}</td>
+                            </tr>
+                            <tr>
+                                <th>Voting Time:</th>
+                                <td>8:00 AM - 4:00 PM</td>
+                            </tr>
+                            <tr>
+                                <th>Venue:</th>
+                                <td>To Be Announced</td>
+                            </tr>
+                            <tr>
+                                <th>Eligible Voters:</th>
+                                <td>All registered NAAS members</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-lg-6">
+                <div class="card h-100">
+                    <div class="card-header bg-gold text-dark">
+                        <i class="bi bi-check-circle me-2"></i>Voting Requirements
+                    </div>
+                    <div class="card-body">
+                        <ul class="list-unstyled">
+                            <li class="mb-3">
+                                <i class="bi bi-check-circle-fill text-success me-2"></i>
+                                Must be a registered NAAS member
+                            </li>
+                            <li class="mb-3">
+                                <i class="bi bi-check-circle-fill text-success me-2"></i>
+                                Valid NAAS membership ID card required
+                            </li>
+                            <li class="mb-3">
+                                <i class="bi bi-check-circle-fill text-success me-2"></i>
+                                Must be a student from Ankpa LGA
+                            </li>
+                            <li class="mb-3">
+                                <i class="bi bi-check-circle-fill text-success me-2"></i>
+                                Present at the voting venue
+                            </li>
+                        </ul>
+                        <a href="{% url 'members:register' %}" class="btn btn-dark-green">
+                            Register Now
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="card mt-4">
+            <div class="card-header bg-dark-green text-white">
+                <i class="bi bi-list-check me-2"></i>Available Positions
+            </div>
+            <div class="card-body">
+                <div class="row g-3">
+                    <div class="col-md-4">
+                        <div class="p-3 bg-light rounded">
+                            <h6 class="text-dark-green mb-0">President</h6>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="p-3 bg-light rounded">
+                            <h6 class="text-dark-green mb-0">Vice President</h6>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="p-3 bg-light rounded">
+                            <h6 class="text-dark-green mb-0">General Secretary</h6>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="p-3 bg-light rounded">
+                            <h6 class="text-dark-green mb-0">Financial Secretary</h6>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="p-3 bg-light rounded">
+                            <h6 class="text-dark-green mb-0">Treasurer</h6>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="p-3 bg-light rounded">
+                            <h6 class="text-dark-green mb-0">Public Relations Officer</h6>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

@@ -1,0 +1,88 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ post.title }} - NAAS News{% endblock %}
+
+{% block content %}
+<section class="py-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8">
+                <!-- Article -->
+                <article>
+                    <div class="mb-4">
+                        <a href="{% url 'news:news_list' %}" class="text-decoration-none">
+                            <i class="bi bi-arrow-left me-2"></i>Back to News
+                        </a>
+                    </div>
+                    
+                    <span class="badge bg-dark-green mb-3">{{ post.category.name }}</span>
+                    <h1 class="text-dark-green">{{ post.title }}</h1>
+                    
+                    <div class="d-flex gap-4 text-muted mb-4">
+                        <span><i class="bi bi-person me-1"></i>{{ post.author.get_full_name|default:post.author.username }}</span>
+                        <span><i class="bi bi-calendar me-1"></i>{{ post.published_date|date:"F d, Y" }}</span>
+                    </div>
+                    
+                    {% if post.image %}
+                    <img src="{{ post.image.url }}" alt="{{ post.title }}" class="img-fluid rounded mb-4 w-100">
+                    {% endif %}
+                    
+                    <div class="content">
+                        {{ post.content|linebreaks }}
+                    </div>
+                    
+                    <!-- Share -->
+                    <div class="border-top border-bottom py-3 my-4">
+                        <strong>Share this article:</strong>
+                        <a href="#" class="text-dark-green ms-3"><i class="bi bi-facebook fs-5"></i></a>
+                        <a href="#" class="text-dark-green ms-2"><i class="bi bi-twitter-x fs-5"></i></a>
+                        <a href="#" class="text-dark-green ms-2"><i class="bi bi-whatsapp fs-5"></i></a>
+                    </div>
+                </article>
+                
+                <!-- Comments -->
+                <div class="mt-5">
+                    <h4 class="text-dark-green mb-4">Comments ({{ post.comments.count }})</h4>
+                    
+                    {% for comment in post.comments.all %}
+                    {% if comment.approved %}
+                    <div class="card mb-3">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between">
+                                <strong>{{ comment.author }}</strong>
+                                <small class="text-muted">{{ comment.created_date|date:"M d, Y" }}</small>
+                            </div>
+                            <p class="mb-0 mt-2">{{ comment.content }}</p>
+                        </div>
+                    </div>
+                    {% endif %}
+                    {% empty %}
+                    <p class="text-muted">No comments yet. Be the first to comment!</p>
+                    {% endfor %}
+                </div>
+            </div>
+            
+            <!-- Sidebar -->
+            <div class="col-lg-4">
+                <div class="card mb-4">
+                    <div class="card-header bg-dark-green text-white">
+                        Related Articles
+                    </div>
+                    <ul class="list-group list-group-flush">
+                        {% for related in related_posts %}
+                        <li class="list-group-item">
+                            <a href="{% url 'news:news_detail' related.slug %}" class="text-decoration-none">
+                                {{ related.title }}
+                            </a>
+                            <small class="d-block text-muted">{{ related.published_date|date:"M d, Y" }}</small>
+                        </li>
+                        {% empty %}
+                        <li class="list-group-item text-muted">No related articles</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

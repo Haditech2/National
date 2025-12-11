@@ -1,0 +1,715 @@
+[
+{
+  "model": "admin.logentry",
+  "pk": 1,
+  "fields": {
+    "action_time": "2025-12-11T12:13:59.593Z",
+    "user": 3,
+    "content_type": 7,
+    "object_id": "9",
+    "object_repr": "Comr. ALMUJAHIDEEN ALIYU OLOTU",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Name\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 2,
+  "fields": {
+    "action_time": "2025-12-11T12:14:42.787Z",
+    "user": 3,
+    "content_type": 7,
+    "object_id": "11",
+    "object_repr": "RTR. COMR ADAM ABDULHADI",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Name\", \"Phone number\", \"Photo\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 3,
+  "fields": {
+    "action_time": "2025-12-11T12:15:54.528Z",
+    "user": 3,
+    "content_type": 7,
+    "object_id": "11",
+    "object_repr": "Rtr. Comr. Adamu Abdulhadi",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Name\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 4,
+  "fields": {
+    "action_time": "2025-12-11T12:16:22.335Z",
+    "user": 3,
+    "content_type": 7,
+    "object_id": "11",
+    "object_repr": "Rtr. Comr. Adamu Abdulhadi",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"School\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 5,
+  "fields": {
+    "action_time": "2025-12-11T12:42:03.941Z",
+    "user": 3,
+    "content_type": 7,
+    "object_id": "9",
+    "object_repr": "Comr. Almujahideen Aliyu Olotu",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Name\", \"Phone number\", \"Photo\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 6,
+  "fields": {
+    "action_time": "2025-12-11T12:42:58.675Z",
+    "user": 3,
+    "content_type": 7,
+    "object_id": "10",
+    "object_repr": "Comr. Fauziya Odawn",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Name\", \"Phone number\", \"Photo\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 7,
+  "fields": {
+    "action_time": "2025-12-11T12:44:22.727Z",
+    "user": 3,
+    "content_type": 7,
+    "object_id": "10",
+    "object_repr": "Comr. Fauziya Odawn",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Position\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 8,
+  "fields": {
+    "action_time": "2025-12-11T12:50:45.724Z",
+    "user": 3,
+    "content_type": 7,
+    "object_id": "12",
+    "object_repr": "Omale Idris",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Name\", \"Position\", \"School\", \"Phone number\", \"Photo\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 9,
+  "fields": {
+    "action_time": "2025-12-11T12:52:43.700Z",
+    "user": 3,
+    "content_type": 7,
+    "object_id": "13",
+    "object_repr": "Abraham Daniel",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Name\", \"Position\", \"Phone number\", \"Photo\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 10,
+  "fields": {
+    "action_time": "2025-12-11T12:55:29.202Z",
+    "user": 3,
+    "content_type": 7,
+    "object_id": "14",
+    "object_repr": "Comr. Yakubu abdulrazak",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Name\", \"Phone number\", \"Photo\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 11,
+  "fields": {
+    "action_time": "2025-12-11T12:59:28.136Z",
+    "user": 3,
+    "content_type": 7,
+    "object_id": "15",
+    "object_repr": "Comr. Joseph Francis",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Name\", \"Position\", \"School\", \"Phone number\", \"Photo\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 12,
+  "fields": {
+    "action_time": "2025-12-11T13:00:00.062Z",
+    "user": 3,
+    "content_type": 7,
+    "object_id": "12",
+    "object_repr": "Omale Idris",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Order\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 13,
+  "fields": {
+    "action_time": "2025-12-11T13:00:00.068Z",
+    "user": 3,
+    "content_type": 7,
+    "object_id": "14",
+    "object_repr": "Comr. Yakubu abdulrazak",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Order\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 14,
+  "fields": {
+    "action_time": "2025-12-11T13:00:37.469Z",
+    "user": 3,
+    "content_type": 7,
+    "object_id": "15",
+    "object_repr": "Comr. Joseph Francis",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Order\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 15,
+  "fields": {
+    "action_time": "2025-12-11T13:01:04.344Z",
+    "user": 3,
+    "content_type": 7,
+    "object_id": "13",
+    "object_repr": "Abraham Daniel",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Order\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 16,
+  "fields": {
+    "action_time": "2025-12-11T13:01:04.344Z",
+    "user": 3,
+    "content_type": 7,
+    "object_id": "12",
+    "object_repr": "Omale Idris",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Order\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 17,
+  "fields": {
+    "action_time": "2025-12-11T13:04:41.576Z",
+    "user": 3,
+    "content_type": 13,
+    "object_id": "1",
+    "object_repr": "muhammed Kashim Abdulmejid - President",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 18,
+  "fields": {
+    "action_time": "2025-12-11T13:05:13.308Z",
+    "user": 3,
+    "content_type": 13,
+    "object_id": "2",
+    "object_repr": "Suleiman Sherifdeen - President",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 19,
+  "fields": {
+    "action_time": "2025-12-11T13:05:50.439Z",
+    "user": 3,
+    "content_type": 13,
+    "object_id": "3",
+    "object_repr": "Isah Umar faruk - Director of social",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 20,
+  "fields": {
+    "action_time": "2025-12-11T13:06:11.262Z",
+    "user": 3,
+    "content_type": 13,
+    "object_id": "4",
+    "object_repr": "Saheed Tijani - President",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 21,
+  "fields": {
+    "action_time": "2025-12-11T13:06:31.251Z",
+    "user": 3,
+    "content_type": 13,
+    "object_id": "5",
+    "object_repr": "Maji Paul - President",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 22,
+  "fields": {
+    "action_time": "2025-12-11T13:07:15.327Z",
+    "user": 3,
+    "content_type": 13,
+    "object_id": "6",
+    "object_repr": "Ahmad zaidu - Financial Secretary",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 23,
+  "fields": {
+    "action_time": "2025-12-11T13:07:27.924Z",
+    "user": 3,
+    "content_type": 13,
+    "object_id": "5",
+    "object_repr": "Maji Paul - President",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Level\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 24,
+  "fields": {
+    "action_time": "2025-12-11T13:08:00.659Z",
+    "user": 3,
+    "content_type": 13,
+    "object_id": "7",
+    "object_repr": "Abdullahi Fatima - Vice President",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 25,
+  "fields": {
+    "action_time": "2025-12-11T13:09:06.509Z",
+    "user": 3,
+    "content_type": 11,
+    "object_id": "1",
+    "object_repr": "NAtional Convention",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 26,
+  "fields": {
+    "action_time": "2025-12-11T13:11:05.972Z",
+    "user": 3,
+    "content_type": 8,
+    "object_id": "1",
+    "object_repr": "Admin",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 27,
+  "fields": {
+    "action_time": "2025-12-11T13:11:11.390Z",
+    "user": 3,
+    "content_type": 9,
+    "object_id": "1",
+    "object_repr": "Postponement of Convention",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 28,
+  "fields": {
+    "action_time": "2025-12-11T13:15:51.385Z",
+    "user": 3,
+    "content_type": 15,
+    "object_id": "1",
+    "object_repr": "Movements",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}, {\"added\": {\"name\": \"photo\", \"object\": \"visit to Onu Ankpa\"}}, {\"added\": {\"name\": \"photo\", \"object\": \"visit to police\"}}, {\"added\": {\"name\": \"photo\", \"object\": \"visit to lgea\"}}]"
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 1,
+  "fields": {
+    "password": "pbkdf2_sha256$600000$pjetgRg6xfTEZ3gxG29FsT$ZzqIHvDaTdqPuDQc4rGc83PDdf5VVkNQ3XoidVA1S1A=",
+    "last_login": null,
+    "is_superuser": true,
+    "username": "admin",
+    "first_name": "",
+    "last_name": "",
+    "email": "admin@naas.org.ng",
+    "is_staff": true,
+    "is_active": true,
+    "date_joined": "2025-12-11T11:32:33.534Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 2,
+  "fields": {
+    "password": "pbkdf2_sha256$600000$EOygEGuq8Q2T7WgL4aoE31$am/U46uPbbmx9keUSwUiLuwGFoCmDvKEVtFT/B5I11U=",
+    "last_login": "2025-12-11T11:35:48.306Z",
+    "is_superuser": false,
+    "username": "hadiman",
+    "first_name": "Ademu",
+    "last_name": "Abdullahadi",
+    "email": "lahadiademu5@gmail.com",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2025-12-11T11:35:47.135Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 3,
+  "fields": {
+    "password": "pbkdf2_sha256$600000$RIW8c4V9Do9l6febt2LDYr$rmcolaJFFrC6MuBM00iM1n35vXdY2uI8/enIvutclFo=",
+    "last_login": "2025-12-11T11:57:37.342Z",
+    "is_superuser": true,
+    "username": "haditech",
+    "first_name": "",
+    "last_name": "",
+    "email": "la@gmail.com",
+    "is_staff": true,
+    "is_active": true,
+    "date_joined": "2025-12-11T11:56:52.377Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "tjadh1mqaq3p2undlecxdaz3vbvsro6x",
+  "fields": {
+    "session_data": ".eJxVjDsOwjAQBe_iGlmJvf5R0nMGa9de4wBypDipEHeHSCmgfTPzXiLitta4dV7ilMVZaHH63QjTg9sO8h3bbZZpbusykdwVedAur3Pm5-Vw_w4q9vqtzZgS6aJyAiJiV3TgwToTKIwuYCgE3ntVSgELAyNYhd5oQIZsjLLi_QEA6Tga:1vTfIf:9B5nPMXSLJYhrajuS-A0MucOeAtUfuyaXArJf6MZ8FQ",
+    "expire_date": "2025-12-25T11:57:37.351Z"
+  }
+},
+{
+  "model": "core.executive",
+  "pk": 9,
+  "fields": {
+    "name": "Comr. Almujahideen Aliyu Olotu",
+    "position": "President",
+    "school": "Kogi State University, Anyigba",
+    "phone_number": "08116776513",
+    "bio": "A visionary leader committed to student welfare and academic excellence.",
+    "photo": "executives/001.jpeg",
+    "order": 1
+  }
+},
+{
+  "model": "core.executive",
+  "pk": 10,
+  "fields": {
+    "name": "Comr. Fauziya Odawn",
+    "position": "Iye National",
+    "school": "Federal University Lokoja",
+    "phone_number": "08136117126",
+    "bio": "Dedicated to promoting unity and progress among Ankpa students.",
+    "photo": "executives/iye.jpeg",
+    "order": 2
+  }
+},
+{
+  "model": "core.executive",
+  "pk": 11,
+  "fields": {
+    "name": "Rtr. Comr. Adamu Abdulhadi",
+    "position": "General Secretary",
+    "school": "Nasarawa State University, Keffi",
+    "phone_number": "08141814137",
+    "bio": "Efficient administrator ensuring smooth operations of the association.",
+    "photo": "executives/WhatsApp_Image_2025-11-28_at_15.56.03_1.jpeg",
+    "order": 3
+  }
+},
+{
+  "model": "core.executive",
+  "pk": 12,
+  "fields": {
+    "name": "Omale Idris",
+    "position": "Senate President",
+    "school": "ATBU KSCOE chapter",
+    "phone_number": "08163654766",
+    "bio": "Transparent and accountable financial management.",
+    "photo": "executives/WhatsApp_Image_2025-12-11_at_13.47.22.jpeg",
+    "order": 5
+  }
+},
+{
+  "model": "core.executive",
+  "pk": 13,
+  "fields": {
+    "name": "Abraham Daniel",
+    "position": "Vice president Special Duties",
+    "school": "University of Abuja",
+    "phone_number": "08126669856",
+    "bio": "Prudent custodian of association funds.",
+    "photo": "executives/WhatsApp_Image_2025-12-11_at_13.47.22_1.jpeg",
+    "order": 7
+  }
+},
+{
+  "model": "core.executive",
+  "pk": 14,
+  "fields": {
+    "name": "Comr. Yakubu abdulrazak",
+    "position": "Public Relations Officer",
+    "school": "Federal Polytechnic Idah",
+    "phone_number": "07038692840",
+    "bio": "Bridging communication between members and the public.",
+    "photo": "executives/WhatsApp_Image_2025-12-11_at_13.54.15.jpeg",
+    "order": 4
+  }
+},
+{
+  "model": "core.executive",
+  "pk": 15,
+  "fields": {
+    "name": "Comr. Joseph Francis",
+    "position": "Vice President",
+    "school": "Federal University, Lokoja",
+    "phone_number": "08083851132",
+    "bio": "Organizing memorable events and social activities.",
+    "photo": "executives/WhatsApp_Image_2025-12-11_at_13.56.02.jpeg",
+    "order": 6
+  }
+},
+{
+  "model": "core.executive",
+  "pk": 16,
+  "fields": {
+    "name": "Comr. Mary Attah",
+    "position": "Welfare Director",
+    "school": "University of Jos",
+    "phone_number": "+234 817 890 1234",
+    "bio": "Ensuring the welfare and well-being of all members.",
+    "photo": "",
+    "order": 8
+  }
+},
+{
+  "model": "news.category",
+  "pk": 1,
+  "fields": {
+    "name": "Admin",
+    "slug": "admin"
+  }
+},
+{
+  "model": "news.newspost",
+  "pk": 1,
+  "fields": {
+    "title": "Postponement of Convention",
+    "slug": "postponement-of-convention",
+    "content": "This is to notify the general public that the convention has been rescheduled to the 26th due to unforeseen circumstances. Further updates will be communicated in due course.",
+    "excerpt": "",
+    "category": 1,
+    "author": 1,
+    "published_date": "2025-12-11T13:11:11.289Z",
+    "featured": false,
+    "image": ""
+  }
+},
+{
+  "model": "events.event",
+  "pk": 1,
+  "fields": {
+    "title": "NAtional Convention",
+    "description": "NAAS National Convention",
+    "date": "2025-12-26T13:08:54Z",
+    "venue": "Not decided yet",
+    "image": ""
+  }
+},
+{
+  "model": "election.candidate",
+  "pk": 1,
+  "fields": {
+    "name": "muhammed Kashim Abdulmejid",
+    "position": "President",
+    "level": "400",
+    "department": "nil",
+    "manifesto": "",
+    "photo": "",
+    "manifesto_text": ""
+  }
+},
+{
+  "model": "election.candidate",
+  "pk": 2,
+  "fields": {
+    "name": "Suleiman Sherifdeen",
+    "position": "President",
+    "level": "HND2",
+    "department": "nil",
+    "manifesto": "",
+    "photo": "",
+    "manifesto_text": ""
+  }
+},
+{
+  "model": "election.candidate",
+  "pk": 3,
+  "fields": {
+    "name": "Isah Umar faruk",
+    "position": "Director of social",
+    "level": "HND2",
+    "department": "nil",
+    "manifesto": "",
+    "photo": "",
+    "manifesto_text": ""
+  }
+},
+{
+  "model": "election.candidate",
+  "pk": 4,
+  "fields": {
+    "name": "Saheed Tijani",
+    "position": "President",
+    "level": "400",
+    "department": "nil",
+    "manifesto": "",
+    "photo": "",
+    "manifesto_text": ""
+  }
+},
+{
+  "model": "election.candidate",
+  "pk": 5,
+  "fields": {
+    "name": "Maji Paul",
+    "position": "President",
+    "level": "NCE3",
+    "department": "nil",
+    "manifesto": "",
+    "photo": "",
+    "manifesto_text": ""
+  }
+},
+{
+  "model": "election.candidate",
+  "pk": 6,
+  "fields": {
+    "name": "Ahmad zaidu",
+    "position": "Financial Secretary",
+    "level": "HND2",
+    "department": "nil",
+    "manifesto": "",
+    "photo": "",
+    "manifesto_text": ""
+  }
+},
+{
+  "model": "election.candidate",
+  "pk": 7,
+  "fields": {
+    "name": "Abdullahi Fatima",
+    "position": "Vice President",
+    "level": "300",
+    "department": "nil",
+    "manifesto": "",
+    "photo": "",
+    "manifesto_text": ""
+  }
+},
+{
+  "model": "members.member",
+  "pk": 1,
+  "fields": {
+    "user": 2,
+    "phone_number": "",
+    "school": "Nasarawa State University Keffi",
+    "department": "Computer science",
+    "level": "Graduate",
+    "chapter": "NSUK CHAPTER",
+    "passport_photo": "members/passport/WhatsApp_Image_2025-11-28_at_15.56.03_1.jpeg",
+    "membership_id": "NAAS-ANKPA-2025-0001",
+    "qr_code_image": "",
+    "id_card_generated_at": "2025-12-11T11:35:57.477Z",
+    "emergency_contact": "07039824103",
+    "emergency_phone": ""
+  }
+},
+{
+  "model": "gallery.album",
+  "pk": 1,
+  "fields": {
+    "title": "Movements",
+    "description": "our latest visitation to Local govt chairman",
+    "cover_image": "albums/2b24bf9c-a955-4139-8a9c-f1bf8fcdc921.jpg",
+    "created_date": "2025-12-11T13:15:51.369Z"
+  }
+},
+{
+  "model": "gallery.photo",
+  "pk": 1,
+  "fields": {
+    "album": 1,
+    "image": "gallery/photos/2b24bf9c-a955-4139-8a9c-f1bf8fcdc921.jpg",
+    "caption": "visit to Onu Ankpa",
+    "uploaded_at": "2025-12-11T13:15:51.377Z"
+  }
+},
+{
+  "model": "gallery.photo",
+  "pk": 2,
+  "fields": {
+    "album": 1,
+    "image": "gallery/photos/16e1bc74-b7b8-4cfb-804b-e7c2641af0d8.jpg",
+    "caption": "visit to police",
+    "uploaded_at": "2025-12-11T13:15:51.377Z"
+  }
+},
+{
+  "model": "gallery.photo",
+  "pk": 3,
+  "fields": {
+    "album": 1,
+    "image": "gallery/photos/40e94548-0a00-4506-8e53-3a0efaa34e4f.jpg",
+    "caption": "visit to lgea",
+    "uploaded_at": "2025-12-11T13:15:51.385Z"
+  }
+}
+]

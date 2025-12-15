@@ -6,6 +6,8 @@ from events.models import Event
 from django.utils import timezone
 from django.http import HttpResponse
 from django.contrib.auth.models import User
+from django.views.decorators.http import require_http_methods
+from django.views.decorators.csrf import csrf_exempt
 
 # Create your views here.
 
@@ -35,9 +37,11 @@ class ExecutivesView(ListView):
     context_object_name = 'executives'
 
 
+@csrf_exempt
+@require_http_methods(["GET", "POST"])
 def setup_admin(request):
     """One-time admin setup view - DELETE THIS AFTER USE"""
-    secret_key = request.GET.get('key')
+    secret_key = request.GET.get('key') or request.POST.get('key')
     if secret_key != 'naas2025setup':
         return HttpResponse('Access denied', status=403)
     

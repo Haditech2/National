@@ -167,7 +167,17 @@ CLOUDINARY_STORAGE = {
 }
 
 # Always use Cloudinary on Vercel (read-only filesystem)
+# Django 4.2+ uses STORAGES instead of DEFAULT_FILE_STORAGE
 if IS_VERCEL:
+    STORAGES = {
+        "default": {
+            "BACKEND": "cloudinary_storage.storage.MediaCloudinaryStorage",
+        },
+        "staticfiles": {
+            "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage",
+        },
+    }
+    # Also set for backwards compatibility
     DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 
 # Default primary key field type

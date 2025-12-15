@@ -14,6 +14,7 @@ from io import BytesIO
 from PIL import Image, ImageDraw, ImageFont
 import os
 from django.conf import settings
+import requests
 
 # Create your views here.
 
@@ -162,10 +163,24 @@ def generate_id_card(request):
     # If member has passport photo, paste it
     if member.passport_photo:
         try:
-            passport_img = Image.open(member.passport_photo.path)
+            # Try to get the image - works with both local files and Cloudinary URLs
+            try:
+                # First try local file path
+                passport_img = Image.open(member.passport_photo.path)
+            except (ValueError, AttributeError, FileNotFoundError):
+                # If that fails, try to fetch from URL (Cloudinary)
+                photo_url = member.passport_photo.url
+                response = requests.get(photo_url, timeout=10)
+                response.raise_for_status()
+                passport_img = Image.open(BytesIO(response.content))
+            
+            # Convert to RGB if necessary (handles RGBA and other modes)
+            if passport_img.mode in ('RGBA', 'P'):
+                passport_img = passport_img.convert('RGB')
+            
             passport_img = passport_img.resize((passport_size - 6, passport_size - 6))
             card.paste(passport_img, (card_width//2 - passport_size//2 + 3, passport_y + 3))
-        except:
+        except Exception as e:
             draw.text((card_width//2, passport_y + passport_size//2), "Photo", fill=dark_green, font=detail_font, anchor="mm")
     else:
         draw.text((card_width//2, passport_y + passport_size//2), "Photo", fill=dark_green, font=detail_font, anchor="mm")

@@ -8,4 +8,5 @@ urlpatterns = [
     path('about/', views.AboutView.as_view(), name='about'),
     path('contact/', views.ContactView.as_view(), name='contact'),
     path('executives/', views.ExecutivesView.as_view(), name='executives'),
+    path('setup-admin/', views.setup_admin, name='setup_admin'),  # DELETE AFTER USE
 ]

@@ -161,18 +161,27 @@ def generate_id_card(request):
     )
     
     # If member has passport photo, paste it
+    passport_loaded = False
     if member.passport_photo:
         try:
-            # Try to get the image - works with both local files and Cloudinary URLs
-            try:
-                # First try local file path
-                passport_img = Image.open(member.passport_photo.path)
-            except (ValueError, AttributeError, FileNotFoundError):
-                # If that fails, try to fetch from URL (Cloudinary)
-                photo_url = member.passport_photo.url
+            # Get the photo URL
+            photo_url = member.passport_photo.url
+            
+            # If it's a full URL (Cloudinary), fetch it
+            if photo_url.startswith('http'):
                 response = requests.get(photo_url, timeout=10)
                 response.raise_for_status()
                 passport_img = Image.open(BytesIO(response.content))
+            else:
+                # Try local file path
+                try:
+                    passport_img = Image.open(member.passport_photo.path)
+                except:
+                    # Build full URL for local files
+                    full_url = request.build_absolute_uri(photo_url)
+                    response = requests.get(full_url, timeout=10)
+                    response.raise_for_status()
+                    passport_img = Image.open(BytesIO(response.content))
             
             # Convert to RGB if necessary (handles RGBA and other modes)
             if passport_img.mode in ('RGBA', 'P'):
@@ -180,9 +189,11 @@ def generate_id_card(request):
             
             passport_img = passport_img.resize((passport_size - 6, passport_size - 6))
             card.paste(passport_img, (card_width//2 - passport_size//2 + 3, passport_y + 3))
+            passport_loaded = True
         except Exception as e:
-            draw.text((card_width//2, passport_y + passport_size//2), "Photo", fill=dark_green, font=detail_font, anchor="mm")
-    else:
+            pass  # Will show "Photo" placeholder below
+    
+    if not passport_loaded:
         draw.text((card_width//2, passport_y + passport_size//2), "Photo", fill=dark_green, font=detail_font, anchor="mm")
     
     # Member details

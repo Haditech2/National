@@ -37,7 +37,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'storages',
+    'cloudinary_storage',
+    'cloudinary',
     'core',
     'news',
     'events',
@@ -151,26 +152,23 @@ MEDIA_ROOT = BASE_DIR / 'media'
 
 import os
 
-# Vercel Blob Storage Configuration (S3-compatible)
-# Use Vercel Blob for media storage on Vercel (read-only file system)
-if os.environ.get('VERCEL'):
-    # Vercel Blob settings
-    AWS_ACCESS_KEY_ID = os.environ.get('BLOB_READ_WRITE_TOKEN', '')
-    AWS_SECRET_ACCESS_KEY = os.environ.get('BLOB_READ_WRITE_TOKEN', '')
-    AWS_STORAGE_BUCKET_NAME = os.environ.get('BLOB_STORE_ID', 'naas-media')
-    AWS_S3_ENDPOINT_URL = 'https://blob.vercel-storage.com'
-    AWS_S3_REGION_NAME = 'auto'
-    AWS_DEFAULT_ACL = 'public-read'
-    AWS_S3_OBJECT_PARAMETERS = {
-        'CacheControl': 'max-age=86400',
-    }
-    AWS_QUERYSTRING_AUTH = False
-    
-    # Use S3 for default file storage
-    DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
-    
-    # Media URL will be served from Vercel Blob
-    MEDIA_URL = f'https://{AWS_STORAGE_BUCKET_NAME}.public.blob.vercel-storage.com/'
+# Detect if running on Vercel (multiple detection methods)
+IS_VERCEL = (
+    os.environ.get('VERCEL') or 
+    os.environ.get('VERCEL_ENV') or
+    '/var/task' in str(BASE_DIR)
+)
+
+# Cloudinary Configuration
+CLOUDINARY_STORAGE = {
+    'CLOUD_NAME': os.environ.get('CLOUDINARY_CLOUD_NAME', 'dgny3sgle'),
+    'API_KEY': os.environ.get('CLOUDINARY_API_KEY', ''),
+    'API_SECRET': os.environ.get('CLOUDINARY_API_SECRET', ''),
+}
+
+# Always use Cloudinary on Vercel (read-only filesystem)
+if IS_VERCEL:
+    DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field

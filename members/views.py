@@ -3,7 +3,7 @@ from django.views.generic import TemplateView, UpdateView, CreateView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
-from django.contrib.auth import login
+from django.contrib.auth import login, logout
 from django.http import HttpResponse
 from django.urls import reverse_lazy, reverse
 from django.utils import timezone
@@ -15,6 +15,13 @@ from PIL import Image, ImageDraw, ImageFont
 import os
 from django.conf import settings
 import requests
+
+
+def logout_view(request):
+    """Custom logout view that handles both GET and POST requests"""
+    logout(request)
+    return redirect('core:home')
+
 
 # Create your views here.
 
